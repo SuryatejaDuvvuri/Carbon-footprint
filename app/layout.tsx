@@ -1,5 +1,9 @@
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
+import { AiFillHome, AiOutlineProject } from "react-icons/ai";
+import { IoShareSocialSharp } from 'react-icons/io5'
+import { FaGavel } from 'react-icons/fa'
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +19,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/* Social sharing & Icons */}
+        <div className = "flex py-4 m-3">
+            <IoShareSocialSharp className = "mr-6 cursor-pointer" size = "40"/>
+            <Link href = "/">
+                <AiFillHome className = "justify-center items-center mr-6 cursor-pointer" size = "40"/>
+            </Link>
+            <Link href = "/pages/projects">
+              <AiOutlineProject className = "justify-center items-center mr-6 cursor-pointer" size = "40" href = "/projects"/>
+            </Link>
+            <Link href = "/pages/marketplace">
+                <FaGavel className = "justify-center items-center mr-6 cursor-pointer" size = "40" href = "/marketplace"/>
+            </Link>
+            <button className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sign in</button>
+           
+        </div>
+        {children}
+      </body> 
     </html>
   )
 }
